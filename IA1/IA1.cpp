@@ -5,7 +5,7 @@
 #include <vector>
 #include <ctime>
 
-const int TAM = 100;
+const int TAM = 20;
 const int TAM2 = TAM * TAM;
 const int TAM20 = TAM2 / 5;
 int grafo[TAM][TAM];
@@ -61,11 +61,6 @@ void dfs(int x0, int y0, int x1, int y1) {
         elem = pila.top();
     } while (elem->first != x1 || elem->second != y1);
     cout << elem->first << " " << elem->second << endl;
-    /*for (int i = 0; i < TAM; ++i) {
-        for (int j = 0; j < TAM; ++j)
-            cout << grafo[i][j] << " ";
-        cout << endl;
-    }*/
 }
 
 void aStar(int x0, int y0, int x1, int y1) {
@@ -98,11 +93,6 @@ void aStar(int x0, int y0, int x1, int y1) {
         e0 = *(open.begin());
     } while (e0->posix / TAM != x1 || e0->posix % TAM != y1);
     cout << e0->posix / TAM << " " << e0->posix % TAM << endl;
-    /*for (int i = 0; i < TAM; ++i) {
-        for (int j = 0; j < TAM; ++j)
-            cout << grafo[i][j] << " ";
-        cout << endl;
-    }*/
 }
 
 int main()
@@ -120,8 +110,6 @@ int main()
     random_shuffle(vals2, vals2 + TAM2);
     for (int k = 0; k < TAM20; ++k)
         grafo[vals1[k]][vals2[k]] = -1;//impasables
-    //cout << vals1[TAM20 + 1] << " " << vals2[TAM20 + 1] << endl;
-    //cout << vals1[TAM20 + 2] << " " << vals2[TAM20 + 2] << endl<<endl;
     //dfs(vals1[TAM20+1],vals2[TAM20+1],vals1[TAM20+2],vals2[TAM20+2]);
     aStar(vals1[TAM20 + 1], vals2[TAM20 + 1], vals1[TAM20 + 2], vals2[TAM20 + 2]);
 }
